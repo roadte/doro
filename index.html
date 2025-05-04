@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>생활안전지도</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      background-color: #fff;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: gray;
+      margin-top: 20px;
+    }
+
+    .image {
+      width: 100%;
+      max-width: 300px;
+      margin: 10px auto;
+    }
+
+    .warning {
+      font-size: 14px;
+      color: red;
+      margin: 10px 0;
+    }
+
+    .icons {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .icons a {
+      flex: 1 1 30%;
+      min-width: 80px;
+      max-width: 100px;
+    }
+
+    .icons img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+	#naverMap {
+	  display: inline-block;
+	  margin: 15px 0;
+	  padding: 10px 20px;
+	  font-size: 18px;
+	  font-weight: bold;
+	  color: white;
+	  background-color: #03c75a; /* 네이버 그린 */
+	  text-decoration: none;
+	  border-radius: 8px;
+	}
+
+    @media (max-width: 480px) {
+      .icons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .icons a {
+        max-width: 60%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title"><p id="text"></p></div>
+
+    <div>
+      <a href="https://www.119.go.kr/Center119/regist.do">
+        <img src="img/119_logo.png" alt="119" class="image">
+      </a>
+      <div class="warning">
+        제31조(허위등의 위기신고를 할 경우 또는 경찰 긴급전화 장난으로 할 경우에는 500만원 이하의 과태료가 부과됩니다.)
+      </div>
+    </div>
+
+    <div>
+		<a href="https://www.112.go.kr">
+			<img src="./img/112-logo.png" alt="112 신고포털" class="image">
+		</a>
+    </div>
+
+    <div>
+		<a id="naverMap" href="#">네이버 지도에서 보기</a>
+    </div>
+
+    <div class="icons">
+		<a href="https://www.changwon.go.kr/cwportal/main.web">
+			<img src="img/창원특례시 좌우 조합 심벌마크 국문.png" alt="창원 특례시">
+		</a>
+		<a href="https://www.juso.go.kr/openIndexPage.do">
+			<img src="img/juso-logo.gif" alt="주소정보누리집">
+		</a>
+		<a href="https://www.safekorea.go.kr/idsiSFK/neo/main/main.html">
+			<img src="img/safekorea_logo.png" alt="국민재안안전포털">
+		</a>
+    </div>
+
+    <div class="subtitle">
+		<a href="https://www.safemap.go.kr/main/smap.do">
+		<img src="img/safemap-logo.svg" alt="생활안전지도">
+		</a>
+	</div>
+  </div>
+
+  <script>
+    const url = new URL(window.location.href);
+    const addr = url.searchParams.get("addr");
+    document.getElementById("text").textContent = addr;
+    document.getElementById("naverMap").href = "https://map.naver.com/v5/search/" + addr;
+  </script>
+</body>
+</html>
